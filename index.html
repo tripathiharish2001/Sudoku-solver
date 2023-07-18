@@ -3,7 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/a53433829a.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="style.css" />
     <title>Document</title>
+    <script async src="script.js"></script>
   </head>
-  <body></body>
+  <body>
+    <div class="w-container">
+      <div class="welcome-window">
+        <div class="bimg"></div>
+      </div>
+    </div>
+    <div class="board container-board"></div>
+    <a href="#" class="btn-link btn-submit btn">Submit</a>
+    <a href="#" class="btn-link btn-clear btn">Reset</a>
+    <div class="alert-container hidden">
+      <div class="alert">
+        <div class="del"><i class="fa-solid fa-trash"></i></div>
+        <div class="alert-msg">
+          <p class="alert-text">Invalid entries!</p>
+          <i class="fa-regular fa-circle-xmark"></i>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
