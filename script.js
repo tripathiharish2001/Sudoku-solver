@@ -37,7 +37,7 @@ const makeBoard = function (e) {
       ip.type = "number";
       ip.max = "9";
       ip.min = "1";
-      ip.placeholder = "0";
+      ip.placeholder = "";
       newBlock.append(ip);
       boardContainer.append(newBlock);
     }
