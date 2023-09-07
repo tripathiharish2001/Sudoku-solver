@@ -320,6 +320,6 @@ const applyColor = function () {
 };
 applyColor();
 
-// setTimeout(function () {
-//   document.querySelector(".w-container").classList.add("hidden");
-// }, 2000);
+setTimeout(function () {
+  document.querySelector(".w-container").classList.add("hidden");
+}, 2000);
