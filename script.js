@@ -1,29 +1,130 @@
 const boardContainer = document.querySelector(".board");
 const closeModal = document.querySelector(".del");
 const alertContainer = document.querySelector(".alert-container");
+const play = document.querySelector(".play");
 // ########################################################################
 // MAKE BOARD
 
-const arr = [
-  [3, 0, 6, 5, 0, 8, 4, 0, 0],
-  [5, 2, 0, 0, 0, 0, 0, 0, 0],
-  [0, 8, 7, 0, 0, 0, 0, 3, 1],
-  [0, 0, 3, 0, 1, 0, 0, 8, 0],
-  [9, 0, 0, 8, 6, 3, 0, 0, 5],
-  [0, 5, 0, 0, 9, 0, 6, 0, 0],
-  [1, 3, 0, 0, 0, 0, 2, 5, 0],
-  [0, 0, 0, 0, 0, 0, 0, 7, 4],
-  [0, 0, 5, 2, 0, 6, 3, 0, 0],
+const sudokuPatterns = [
+  [
+    // fine
+    [3, 0, 6, 5, 0, 8, 4, 0, 0],
+    [5, 2, 0, 0, 0, 0, 0, 0, 0],
+    [0, 8, 7, 0, 0, 0, 0, 3, 1],
+    [0, 0, 3, 0, 1, 0, 0, 8, 0],
+    [9, 0, 0, 8, 6, 3, 0, 0, 5],
+    [0, 5, 0, 0, 9, 0, 6, 0, 0],
+    [1, 3, 0, 0, 0, 0, 2, 5, 0],
+    [0, 0, 0, 0, 0, 0, 0, 7, 4],
+    [0, 0, 5, 2, 0, 6, 3, 0, 0],
+  ],
+  [
+    // fine
+    [0, 2, 0, 0, 0, 0, 0, 1, 0],
+    [9, 0, 0, 2, 0, 3, 0, 0, 5],
+    [0, 0, 6, 0, 0, 0, 7, 0, 0],
+    [0, 5, 0, 0, 0, 0, 0, 4, 0],
+    [8, 0, 0, 0, 4, 0, 0, 0, 6],
+    [0, 1, 0, 0, 0, 0, 0, 3, 0],
+    [0, 0, 8, 0, 0, 0, 3, 0, 0],
+    [4, 0, 0, 5, 0, 7, 0, 0, 8],
+    [0, 3, 0, 0, 0, 0, 0, 2, 0],
+  ],
+  [
+    // fine
+    [1, 0, 0, 0, 0, 7, 0, 9, 0],
+    [0, 3, 0, 0, 2, 0, 0, 0, 8],
+    [0, 0, 9, 6, 0, 0, 5, 0, 0],
+    [0, 0, 5, 3, 0, 0, 9, 0, 0],
+    [0, 1, 0, 0, 8, 0, 0, 0, 2],
+    [6, 0, 0, 0, 0, 4, 0, 0, 0],
+    [3, 0, 0, 0, 0, 0, 0, 1, 0],
+    [0, 4, 0, 0, 0, 0, 0, 0, 7],
+    [0, 0, 7, 0, 0, 0, 3, 0, 0],
+  ],
+  [
+    // fine
+    [0, 7, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 4, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 2, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 8, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 3],
+    [0, 0, 0, 0, 0, 0, 0, 0, 4],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ],
+  [
+    // fine
+    [5, 3, 0, 0, 7, 0, 0, 0, 0],
+    [6, 0, 0, 1, 9, 5, 0, 0, 0],
+    [0, 9, 8, 0, 0, 0, 0, 6, 0],
+    [8, 0, 0, 0, 6, 0, 0, 0, 3],
+    [4, 0, 0, 8, 0, 3, 0, 0, 1],
+    [7, 0, 0, 0, 2, 0, 0, 0, 6],
+    [0, 6, 0, 0, 0, 0, 2, 8, 0],
+    [0, 0, 0, 4, 1, 9, 0, 0, 5],
+    [0, 0, 0, 0, 8, 0, 0, 7, 9],
+  ],
+  [
+    // fine
+    [0, 1, 0, 0, 7, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 6, 3, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [8, 0, 0, 0, 0, 0, 0, 2, 0],
+    [0, 0, 2, 0, 0, 0, 0, 0, 0],
+    [0, 5, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 4, 0, 0, 7, 0, 0],
+    [0, 0, 0, 0, 1, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ],
+  [
+    // fine
+    [0, 3, 0, 0, 0, 0, 2, 0, 0],
+    [0, 0, 0, 0, 8, 0, 0, 5, 0],
+    [7, 0, 6, 0, 0, 0, 0, 0, 9],
+    [0, 0, 0, 0, 0, 0, 0, 8, 0],
+    [0, 0, 0, 0, 1, 0, 7, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 9, 0, 0, 0, 0, 0],
+    [0, 0, 0, 2, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ],
+  [
+    // fine
+    [1, 0, 0, 0, 0, 7, 0, 9, 0],
+    [0, 3, 0, 0, 2, 0, 0, 0, 8],
+    [0, 0, 9, 6, 0, 0, 5, 0, 0],
+    [0, 0, 5, 3, 0, 0, 9, 0, 0],
+    [0, 1, 0, 0, 8, 0, 0, 0, 2],
+    [6, 0, 0, 0, 0, 4, 0, 0, 0],
+    [3, 0, 0, 0, 0, 0, 0, 1, 0],
+    [0, 4, 0, 0, 0, 0, 0, 0, 7],
+    [0, 0, 7, 0, 0, 0, 3, 0, 0],
+  ],
 ];
 
+// You can access each pattern using sudokuPatterns[index]
+
 const fillBoard = function (e) {
+  const idx = Math.trunc(Math.random() * sudokuPatterns.length);
   for (let i = 0; i < 9; i++) {
     for (let j = 0; j < 9; j++) {
       let iValue = document.querySelector(`.input-field-${i}${j}`);
-      if (Number(arr[i][j]) > 0) iValue.value = arr[i][j];
+      if (Number(sudokuPatterns[idx][i][j]) > 0)
+        iValue.value = sudokuPatterns[idx][i][j];
     }
   }
 };
+
+function clearBoard() {
+  for (let i = 0; i < 9; i++) {
+    for (let j = 0; j < 9; j++) {
+      let iValue = document.querySelector(`.input-field-${i}${j}`);
+      iValue.value = "";
+    }
+  }
+}
 
 const makeBoard = function (e) {
   for (let i = 0; i < 9; i++) {
@@ -54,10 +155,18 @@ closeModal.addEventListener("click", function () {
   alertContainer.classList.add("hidden");
 });
 
+// PLAY
+
+play.addEventListener("click", function () {
+  clearBoard();
+  fillBoard();
+});
+
 // ----------------------------------------------------------------------------
 
 // ############################################################################
 // SOLVING SUDOKU
+
 const solveSudoku = function () {
   for (let i = 0; i < 9; i++) {
     for (let j = 0; j < 9; j++) {
@@ -120,12 +229,12 @@ const checkSequenceValidity = function (inputField, k, l) {
 // ############################################################################
 // BUTTON to check validity of a fiven input
 const checkValid = function (e) {
-  let cnt = 0;
+  // let cnt = 0;
   for (let i = 0; i < 9; i++) {
     for (let j = 0; j < 9; j++) {
       const inputField = document.querySelector(`.input-field-${i}${j}`);
       if (Number(inputField.value) > 0 && Number(inputField.value) <= 9) {
-        cnt++;
+        // cnt++;
         applyColor();
       }
       if (
@@ -143,7 +252,7 @@ const checkValid = function (e) {
       }
     }
   }
-  if (cnt < 17) return false;
+  // if (cnt < 17) return false;
   return true;
 };
 
@@ -176,21 +285,17 @@ const btnSubmit = document.querySelector(".btn-submit");
 btnSubmit.addEventListener("click", displayValues);
 function displayValues(e) {
   e.preventDefault();
+  console.log("hey");
   checkValues();
+  console.log("bye");
 }
-// ----------------------------------------------------------------------------
 
+// ----------------------------------------------------------------------------
 // BUTTON to check validity
 
 const btnClear = document.querySelector(".btn-clear");
-btnClear.addEventListener("click", function (e) {
-  for (let i = 0; i < 9; i++) {
-    for (let j = 0; j < 9; j++) {
-      let iValue = document.querySelector(`.input-field-${i}${j}`);
-      iValue.value = "";
-    }
-  }
-});
+btnClear.addEventListener("click", clearBoard);
+
 // ----------------------------------------------------------------------------
 
 const applyColor = function () {
@@ -215,6 +320,6 @@ const applyColor = function () {
 };
 applyColor();
 
-setTimeout(function () {
-  document.querySelector(".w-container").classList.add("hidden");
-}, 2000);
+// setTimeout(function () {
+//   document.querySelector(".w-container").classList.add("hidden");
+// }, 2000);

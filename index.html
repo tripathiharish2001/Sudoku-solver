@@ -7,27 +7,73 @@
       src="https://kit.fontawesome.com/a53433829a.js"
       crossorigin="anonymous"
     ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link rel="stylesheet" href="style.css" />
     <title>Document</title>
     <script async src="script.js"></script>
   </head>
   <body>
-    <div class="w-container">
-      <div class="welcome-window">
-        <div class="bimg"></div>
-      </div>
+    <div class="container-nav">
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li class="instructions-tooltip">
+            <a href="#">Instructions</a>
+            <span class="tooltip"
+              >"Enter a Sudoku pattern, and upon clicking 'Solve,' receive a
+              solution for valid patterns or an error message for invalid ones."
+            </span>
+          </li>
+          <li><a href="#" class="play">Play</a></li>
+          <li><a href="#">About</a></li>
+        </ul>
+      </nav>
     </div>
-    <div class="board container-board"></div>
-    <a href="#" class="btn-link btn-submit btn">Submit</a>
-    <a href="#" class="btn-link btn-clear btn">Reset</a>
-    <div class="alert-container hidden">
-      <div class="alert">
-        <div class="del"><i class="fa-solid fa-trash"></i></div>
-        <div class="alert-msg">
-          <p class="alert-text">Invalid entries!</p>
-          <i class="fa-regular fa-circle-xmark"></i>
+
+    <div class="board container-board">
+      <a href="#" class="btn-link btn-submit btn">Submit</a>
+      <a href="#" class="btn-link btn-clear btn">Reset</a>
+      <div class="alert-container hidden">
+        <div class="alert">
+          <div class="del"><i class="fa-solid fa-trash"></i></div>
+          <div class="alert-msg">
+            <p class="alert-text">Invalid entries!</p>
+            <i class="fa-regular fa-circle-xmark"></i>
+          </div>
         </div>
       </div>
     </div>
+
+    <div class="footer">
+      <p>
+        Developed by <span> <strong>Harish Tripathi</strong></span> |
+        <a
+          href="https://github.com/tripathiharish2001"
+          target="__blank"
+          class="icon"
+        >
+          <i class="fa-brands fa-github"></i>
+        </a>
+        |
+        <a
+          href="https://www.linkedin.com/in/harish-tripathi-8bb144214"
+          target="__blank"
+          class="icon"
+        >
+          <i class="fa-brands fa-linkedin"></i>
+        </a>
+      </p>
+    </div>
+
+    <script
+      src="https://kit.fontawesome.com/a53433829a.js"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
