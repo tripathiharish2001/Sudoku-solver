@@ -2,7 +2,7 @@
 
 🧩 Welcome to the Sudoku Solver project by Harish Tripathi! 🧩
 
-[LINK](https://app.netlify.com/sites/sudokusgameolver/overview)
+[LINK](https://sudokusgameolver.netlify.app/)
 
 This Sudoku Solver is a web-based application that allows users to solve Sudoku puzzles using a backtracking algorithm. It provides a user-friendly interface for entering Sudoku puzzles and getting solutions quickly.
 
@@ -21,6 +21,15 @@ This Sudoku Solver is a web-based application that allows users to solve Sudoku 
 - *HTML*: For creating the structure of the web page.
 - *CSS*: For styling the user interface and making it visually appealing.
 - *JavaScript*: To implement the Sudoku solving algorithm and handle user interactions.
+
+## Screenshots
+-Loading Page
+![image](https://github.com/tripathiharish2001/Sudoku-solver/assets/79781231/da81f887-717c-472b-8772-3d162b6af32e)
+
+- Main Page
+  ![image](https://github.com/tripathiharish2001/Sudoku-solver/assets/79781231/912d5811-6f28-40b1-aba0-1143f2cc54dc)
+
+
 
 ## Contribution
 
