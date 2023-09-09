@@ -26,7 +26,7 @@ This Sudoku Solver is a web-based application that allows users to solve Sudoku 
 -Loading Page
 ![image](https://github.com/tripathiharish2001/Sudoku-solver/assets/79781231/da81f887-717c-472b-8772-3d162b6af32e)
 
-- Main Page
+-Main Page
   ![image](https://github.com/tripathiharish2001/Sudoku-solver/assets/79781231/912d5811-6f28-40b1-aba0-1143f2cc54dc)
 
 
