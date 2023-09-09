@@ -322,4 +322,4 @@ applyColor();
 
 setTimeout(function () {
   document.querySelector(".w-container").classList.add("hidden");
-}, 2000);
+}, 3000);
