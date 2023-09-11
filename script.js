@@ -2,6 +2,11 @@ const boardContainer = document.querySelector(".board");
 const closeModal = document.querySelector(".del");
 const alertContainer = document.querySelector(".alert-container");
 const play = document.querySelector(".play");
+
+setTimeout(function () {
+  document.querySelector(".w-container").classList.add("hidden");
+}, 3000);
+
 // ########################################################################
 // MAKE BOARD
 
@@ -308,7 +313,3 @@ const applyColor = function () {
   }
 };
 applyColor();
-
-setTimeout(function () {
-  document.querySelector(".w-container").classList.add("hidden");
-}, 3000);
